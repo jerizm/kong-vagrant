@@ -8,6 +8,8 @@ mkdir -p $OUT
 mkdir -p $TMP
 
 git config --global url.'https://'.insteadOf git://
+sudo git config --global url.'https://'.insteadOf git://
+
 
 OPENSSL_VERSION=1.0.2d
 OPENRESTY_VERSION=1.7.10.2
@@ -40,7 +42,7 @@ OPENRESTY_CONFIGURE="--sbin-path=/usr/sbin/nginx \
 --with-http_postgres_module"
 
 git config --global url.'https://'.insteadOf git://
-
+sudo git config --global url.'https://'.insteadOf git://
 # Download OpenSSL
 cd $TMP
 wget -q https://www.openssl.org/source/openssl-$OPENSSL_VERSION.tar.gz -O openssl-$OPENSSL_VERSION.tar.gz
@@ -75,3 +77,6 @@ cd $TMP/ngx_openresty-$OPENRESTY_VERSION
 ./configure ${OPENRESTY_CONFIGURE}
 make
 make install
+
+sudo luarocks install pgmoon
+sudo mv /kong/dev/socket.lua /usr/local/share/lua/5.1/pgmoon/socket.lua

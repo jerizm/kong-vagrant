@@ -79,4 +79,4 @@ make
 make install
 
 sudo luarocks install pgmoon
-sudo mv /kong/dev/socket.lua /usr/local/share/lua/5.1/pgmoon/socket.lua
+sudo mv /vagrant/socket.lua /usr/local/share/lua/5.1/pgmoon/socket.lua
